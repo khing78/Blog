@@ -1,0 +1,30 @@
+<h1>Store page</h1>
+<div>
+
+    <%= form_tag stores_path, method: :get do %> 
+      <%= check_box_tag(:read, true ) %>
+      <%= label :read, "read" %><br>
+      <%= submit_tag "Submit" %>
+    <% end %>
+  
+</div>
+
+<table>
+  <tr>
+    <th>Store Name</th>
+    <th>Article</th>
+    <th>Article amount</th>
+    <th>Read</th>
+  </tr>
+  <% @stores.each do |store| %>
+  <tr>
+    <td><%= link_to store.name, store%></td>
+    <td><%= store.article.nil? ? "Emty article" : store.article.title%></td>
+    <td><%= store.article_amount %></td>
+    <td><%= store.article.nil? ? "Emty article" : store.article.read %></td>
+  </tr>
+  <% end %>
+
+</table> 
+
+<%= link_to "New Store",  new_store_path%>

@@ -1,0 +1,14 @@
+<h1><%= @store.name %> code: <%= @store.code %></h1>
+<h4>Location: <%= @store.location %></h4>
+<h4>Article amount <%= @store.article_amount %></h4>
+<% if @store.article == nil %>
+    <h3>Emty article</h3>
+<% else %>
+    <h3><%= link_to @store.article.title, "/articles/#{@store.article_id}" %></h3>
+<%end%>
+<h3><%= link_to "Edit", edit_store_path(@store) %></h3>
+<h3><%= link_to "Back to store", "/stores" %></h3>
+
+<h2>Comments</h2>
+
+<%= render @store.article.nil? ? 'articles/null_comment': @store.article.comments %>

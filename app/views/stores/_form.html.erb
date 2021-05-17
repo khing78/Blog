@@ -1,0 +1,45 @@
+<%= form_with model: store do |form| %>
+
+    <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% store.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+    </div>
+
+    <div>
+        <%= form.label :location %><br>
+        <%= form.text_area :location %><br>
+        <% store.errors.full_messages_for(:location).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :code %><br>
+        <%= form.text_field :code %><br>
+        <% store.errors.full_messages_for(:code).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <label>Choose an article:</label>
+        <%= form.select :article_id, options_for_select(
+            @articles.map{ |article| [article.title, article.id] })%>
+    </div>
+    
+    <div>
+        <%= form.label :article_amount %><br>
+        <%= form.number_field :article_amount %><br>
+        <% store.errors.full_messages_for(:article_amount).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+
+<% end %>
